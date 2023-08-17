@@ -4,4 +4,5 @@ export class BookDTO{
     description: string
     avaliable: boolean
     createdAt: Date
+    image: string
 }

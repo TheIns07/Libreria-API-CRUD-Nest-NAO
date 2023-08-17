@@ -4,4 +4,5 @@ export class BookUpdate {
     description?: string
     avaliable?: boolean
     createdAt?: Date
+    image?: string
 }

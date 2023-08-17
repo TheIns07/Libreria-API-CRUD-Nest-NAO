@@ -16,5 +16,7 @@ export class Book {
     avaliable: boolean
     @Column({ type: 'datetime', default: () => { 'CURRENT_TIMESTAMP' } })
     createdAt: Date
+    @Column({ unique: true })
+    image: string
 
 }   
