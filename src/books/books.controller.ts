@@ -9,7 +9,7 @@ export class BooksController {
 
     constructor(private booksService: BooksService){}
     @Post()
-    createBook(@Body() newBook: BookDTO): Promise<Book>{
+    createBook(@Body() newBook: BookDTO){
         return this.booksService.createBook(newBook);
     }
 
@@ -19,7 +19,7 @@ export class BooksController {
     }
 
     @Get(':id')
-    listBook (@Param('id', ParseIntPipe) id: number): Promise<Book>{
+    listBook (@Param('id', ParseIntPipe) id: number){
         return this.booksService.listBookByID(id);
     }
 

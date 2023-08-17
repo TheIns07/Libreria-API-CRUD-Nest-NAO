@@ -21,8 +21,8 @@ export class UsersService {
         return this.userRepository.find();
     }
 
-    listUserByID(id: number){
-        return this.userRepository.findOne({ where:{ id: id}});
+    listUserByUsername(username: string){
+        return this.userRepository.findOne({ where:{ username: username}});
     }
 
     deleteUser(id: number){

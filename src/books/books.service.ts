@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Book } from './Book.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -12,21 +12,32 @@ export class BooksService {
         private bookRepository: Repository<Book>
     ) {}
 
-    createBook(book: BookDTO){
+    async createBook(book: BookDTO){
+       if(await this.bookRepository.findOne({where:{title: book.title}})){
+            return new HttpException ("Libro ya registrado.", HttpStatus.CONFLICT)
+        }
         const newBook = this.bookRepository.create(book);
         return this.bookRepository.save(newBook);
     }
 
     listBooks(){
-        return this.bookRepository.find();
+        return this.bookRepository.find()
     }
 
-    listBookByID(id: number){
-        return this.bookRepository.findOne({ where:{ id: id}});
+    async listBookByID(id: number){
+        const book = await this.bookRepository.findOne({ where:{ id: id}});
+        if(!book){
+            return new HttpException ("Libro no encontrado.", HttpStatus.NOT_FOUND)
+        }
+        return book 
     }
 
-    deleteBook(id: number){
-        return this.bookRepository.delete({id: id});
+    async deleteBook(id: number){
+        const book = await this.bookRepository.findOne({where: {id}});
+        if(!book){
+            return new HttpException ("Libro no encontrado.", HttpStatus.NOT_FOUND)
+        }
+        return this.bookRepository.delete({id: id}); 
     }
 
     updateBook(id: number, book: BookUpdate){

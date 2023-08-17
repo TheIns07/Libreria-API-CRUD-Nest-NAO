@@ -19,9 +19,9 @@ export class UsersController {
         return this.usersService.listUsers();
     }
 
-    @Get(':id')
-    listUser (@Param('id', ParseIntPipe) id: number): Promise<User>{
-        return this.usersService.listUserByID(id);
+    @Get(':username')
+    listUser (@Param('username') username: string): Promise<User>{
+        return this.usersService.listUserByUsername(username);
     }
 
     @Delete(':id')
