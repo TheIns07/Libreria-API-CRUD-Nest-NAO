@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
         database: 'naonestdb',
         entities: [__dirname + '/**/*.entity.{js,ts}'],
         synchronize: true
-    }), BooksModule, AuthModule],
+    }), BooksModule, UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
