@@ -10,7 +10,8 @@ import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AuthService {
     constructor(
-        @InjectRepository(Auth) private readonly authRepository: Repository<Auth>,
+        @InjectRepository(Auth) 
+        private authRepository: Repository<Auth>,
         private jwtAuthService: JwtService
       ) {}
 
@@ -19,7 +20,7 @@ export class AuthService {
         const plainToHash = await hash(password, 10);
 
         userObject = {...userObject, password:plainToHash}
-        return this.authRepository.create()
+        return this.authRepository.save(userObject)
 
       }
 
