@@ -5,11 +5,12 @@ import { Book } from './Book.entity';
 import { BookUpdate } from './models/BookUpdate.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { jwtAuthGuard } from 'src/auth/jwt/guard/jwtAuth.guard';
 
 @ApiTags('books')
 @Controller('books')
 @ApiBearerAuth('Auth')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(jwtAuthGuard)
 export class BooksController {
 
     constructor(private booksService: BooksService){}

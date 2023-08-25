@@ -1,10 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Auth } from "src/auth/auth.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
-@Entity()
+@Entity('book')
 export class Book {
-
+    @ApiProperty({ example: 1 })
     @PrimaryGeneratedColumn()
     id: number
 
@@ -29,5 +30,8 @@ export class Book {
     @ApiProperty({example: 'https://www.elsotano.com/imagenes_grandes/9786079/978607967431.JPG'})
     @Column({ unique: true })
     image: string
+
+    @ManyToOne(()=> Auth, auth => auth.booksReserved, {nullable: true})
+    reserved: Auth
 
 }   

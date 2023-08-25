@@ -4,8 +4,9 @@ import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Auth } from './auth.entity';
 import {JwtModule} from '@nestjs/jwt'
-import { jwtConstants } from './jwtConstants';
-import { JWTStrategy } from './jwt.strategy';
+import { JWTStrategy } from './jwt/jwt.strategy';
+import { jwtConstants } from './jwt/jwtConstants';
+
 
 @Module({
   imports:[TypeOrmModule.forFeature([Auth]),

@@ -31,7 +31,8 @@ describe('AuthController', () => {
         id: 4,
         name: 'Ariadna',
         username: "Ari YuEx",
-        password: "arianaGD!!!!"
+        password: "arianaGD!!!!",
+        booksReserved: null
       };
 
       jest.spyOn(authService, 'register').mockResolvedValue(registered);
@@ -53,6 +54,7 @@ describe('AuthController', () => {
         name: 'Ariadna',
         username: "Ari YuEx",
         password: "arianaGD!!!!",
+        booksReserved: null
       };
 
       jest.spyOn(authService, 'login').mockResolvedValue({
@@ -71,19 +73,22 @@ describe('AuthController', () => {
         id: 4,
         username: "Jose",
         password: "9rfueifn",
-        name: "reiurnfe"
+        name: "reiurnfe",
+        booksReserved: null
       },
         {
           id: 6,
           username: "GGG",
           password: "234r32r",
-          name: "Golovkin"
+          name: "Golovkin",
+          booksReserved: null
         },
         {
           id: 8,
           username: "Madden",
           password: "3cd_2edw22",
-          name: "John Madden"
+          name: "John Madden",
+          booksReserved: null
         }
       )
 

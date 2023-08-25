@@ -18,7 +18,7 @@ describe('JWTStrategy', () => {
 
   describe('validate', () => {
     it('should return a user object with userID and username', () => {
-      const payload = { id: 7, username: 'Ari' };
+      const payload = { id: 7, username: 'Ari', booksReserved: null };
       const validatedUser = jwtStrategy.validate(payload);
       
       expect(validatedUser).toEqual({ userID: payload.id, username: payload.username });

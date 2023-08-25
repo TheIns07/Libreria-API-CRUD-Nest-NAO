@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BooksController } from './books.controller';
 import { Book } from './Book.entity';
 import { BooksService } from './books.service';
+import { Auth } from "src/auth/auth.entity";
 
 describe('BooksController', () => {
   let controller: BooksController;
@@ -26,7 +27,8 @@ describe('BooksController', () => {
         description: "",
         avaliable: false,
         createdAt: new Date(),
-        image: ""
+        image: "",
+        reserved: null
       };
 
       jest.spyOn(service, 'createBook').mockResolvedValue(bookObject);
@@ -41,12 +43,13 @@ describe('BooksController', () => {
       allBooks.push(
         {
           id: 1,
-          title: "La Sombra del Viento",
-          author: "Carlos Ruiz Zafón",
-          description: "Una novela misteriosa ambientada en la posguerra española.",
-          avaliable: true,
+          title: "1984",
+          author: "George Orwell",
+          description: "Una distopía que explora temas de vigilancia y control totalitario.",
+          avaliable: false,
           createdAt: new Date(),
-          image: "imagen_libro_1.jpg"
+          image: "imagen_libro_2.jpg",
+          reserved: null
         },
         {
           id: 2,
@@ -55,7 +58,8 @@ describe('BooksController', () => {
           description: "Una distopía que explora temas de vigilancia y control totalitario.",
           avaliable: false,
           createdAt: new Date(),
-          image: "imagen_libro_2.jpg"
+          image: "imagen_libro_2.jpg",
+          reserved: null
         },
         {
           id: 3,
@@ -64,7 +68,8 @@ describe('BooksController', () => {
           description: "Una obra maestra del realismo mágico en la literatura latinoamericana.",
           avaliable: true,
           createdAt: new Date(),
-          image: "imagen_libro_3.jpg"
+          image: "imagen_libro_3.jpg",
+          reserved: null
         }
       )
 

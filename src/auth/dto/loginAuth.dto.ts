@@ -6,13 +6,13 @@ export class LoginAuthDTO{
     @IsNotEmpty()
     @IsString()
     @MaxLength(300)
-    @ApiProperty({example: 'arturoinscreuo'})
+    @ApiProperty({example: 'Ariadna'})
     username: string
 
     @Length(6, 20)
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({example: '23124dfj'})
+    @ApiProperty({example: 'wiorn3wd'})
     password: string
 
 }

@@ -7,19 +7,19 @@ export class RegisterAuthDTO extends PartialType(LoginAuthDTO){
     @IsNotEmpty()
     @IsString()
     @MaxLength(300)
-    @ApiProperty({example: 'arturoinscreuo'})
+    @ApiProperty({example: 'AriUX'})
     username: string
 
     @Length(6, 40)
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({example: 'Jose Hernandez'})
+    @ApiProperty({example: 'Ariadna'})
     name: string
 
 
     @Length(6, 20)
     @IsNotEmpty()
     @IsString()
-    @ApiProperty({example: '23124dfj'})
+    @ApiProperty({example: 'wiorn3wd'})
     password: string
 }
