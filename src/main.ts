@@ -12,11 +12,11 @@ async function bootstrap() {
   .setVersion('1.0')
   .addTag('books')
   .addTag('auth')
+  .setDescription('')
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  app.setGlobalPrefix('api/v1');
   await app.listen(PORT);
   console.log("Server corriendo en el puerto "+PORT)
 }

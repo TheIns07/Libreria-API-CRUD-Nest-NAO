@@ -1,16 +1,18 @@
-import { Controller, UseGuards, Post, Body, Get, Param, ParseIntPipe, Delete, Patch, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, ParseIntPipe, Delete, Patch, HttpCode } from '@nestjs/common';
 import { BookDTO } from './models/Book.dto';
 import { BooksService } from './books.service';
 import { Book } from './Book.entity';
 import { BookUpdate } from './models/BookUpdate.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
 import { jwtAuthGuard } from 'src/auth/jwt/guard/jwtAuth.guard';
+import { UseGuards } from '@nestjs/common/decorators/core/use-guards.decorator';
 
 @ApiTags('books')
 @Controller('books')
+/*
 @ApiBearerAuth('Auth')
-@UseGuards(jwtAuthGuard)
+@UseGuards(jwtAuthGuard)^
+*/
 export class BooksController {
 
     constructor(private booksService: BooksService){}

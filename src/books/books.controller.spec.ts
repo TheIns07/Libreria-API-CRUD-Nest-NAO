@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BooksController } from './books.controller';
 import { Book } from './Book.entity';
 import { BooksService } from './books.service';
-import { Auth } from "src/auth/auth.entity";
+import { Auth } from 'src/auth/auth.entity';
 
 describe('BooksController', () => {
   let controller: BooksController;
@@ -28,7 +28,7 @@ describe('BooksController', () => {
         avaliable: false,
         createdAt: new Date(),
         image: "",
-        reserved: null
+        booksReserved: <Auth> null
       };
 
       jest.spyOn(service, 'createBook').mockResolvedValue(bookObject);
@@ -49,7 +49,7 @@ describe('BooksController', () => {
           avaliable: false,
           createdAt: new Date(),
           image: "imagen_libro_2.jpg",
-          reserved: null
+          booksReserved: <Auth> null
         },
         {
           id: 2,
@@ -59,7 +59,7 @@ describe('BooksController', () => {
           avaliable: false,
           createdAt: new Date(),
           image: "imagen_libro_2.jpg",
-          reserved: null
+          booksReserved: <Auth> null
         },
         {
           id: 3,
@@ -69,7 +69,7 @@ describe('BooksController', () => {
           avaliable: true,
           createdAt: new Date(),
           image: "imagen_libro_3.jpg",
-          reserved: null
+          booksReserved: <Auth> null
         }
       )
 

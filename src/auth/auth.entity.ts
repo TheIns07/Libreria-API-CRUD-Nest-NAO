@@ -23,6 +23,6 @@ export class Auth {
   @Column()
   password: string;
 
-  @OneToMany(() => Book, book => book.reserved)
+  @OneToMany(() => Book, book => book.booksReserved)
   booksReserved: Book[]
 }

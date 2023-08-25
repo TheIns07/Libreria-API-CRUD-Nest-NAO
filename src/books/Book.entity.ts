@@ -32,6 +32,6 @@ export class Book {
     image: string
 
     @ManyToOne(()=> Auth, auth => auth.booksReserved, {nullable: true})
-    reserved: Auth
+    booksReserved: Auth
 
 }   
