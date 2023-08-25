@@ -15,7 +15,7 @@ export class AuthService {
         private jwtAuthService: JwtService
       ) {}
 
-      async register(userObject: RegisterAuthDTO){
+      async register(userObject: RegisterAuthDTO): Promise<Auth>{
         const {password} = userObject
         const plainToHash = await hash(password, 10);
 
@@ -24,7 +24,7 @@ export class AuthService {
 
       }
 
-      async login(userObject: LoginAuthDTO){
+      async login(userObject: LoginAuthDTO): Promise<{ user: Auth; token: string }>{
         const {username, password} = userObject;
         const findUser = await this.authRepository.findOne({where: {username}})
 
