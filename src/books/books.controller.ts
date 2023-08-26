@@ -9,13 +9,13 @@ import { UseGuards } from '@nestjs/common/decorators/core/use-guards.decorator';
 
 @ApiTags('books')
 @Controller('books')
-/*
-@ApiBearerAuth('Auth')
-@UseGuards(jwtAuthGuard)^
-*/
+
+@ApiBearerAuth()
 export class BooksController {
 
     constructor(private booksService: BooksService){}
+
+    @UseGuards(jwtAuthGuard)
     @Post()
     @ApiResponse({
         status: 201,
@@ -27,7 +27,7 @@ export class BooksController {
         return this.booksService.createBook(newBook);
     }
 
-    
+    @UseGuards(jwtAuthGuard)
     @Get()
     @ApiResponse({
         status: 200,
@@ -40,6 +40,7 @@ export class BooksController {
         return this.booksService.listBooks();
     }
 
+    @UseGuards(jwtAuthGuard)
     @ApiResponse({
         status: 200,
         description: 'List of a book',
@@ -52,6 +53,7 @@ export class BooksController {
         return this.booksService.listBookByID(id);
     }
 
+    @UseGuards(jwtAuthGuard)
     @ApiResponse({
         status: 200,
         description: 'Delete a book'
@@ -63,6 +65,7 @@ export class BooksController {
         return this.booksService.deleteBook(id);
     }
 
+    @UseGuards(jwtAuthGuard)
     @ApiResponse({
         status: 200,
         description: 'Edit a book'

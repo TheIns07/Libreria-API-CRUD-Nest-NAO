@@ -4,6 +4,4 @@ import { ExecutionContextHost } from "@nestjs/core/helpers/execution-context-hos
 
 @Injectable()
 
-export class jwtAuthGuard extends AuthGuard('jwt'){
-
-}
+export class jwtAuthGuard extends AuthGuard('jwt'){}

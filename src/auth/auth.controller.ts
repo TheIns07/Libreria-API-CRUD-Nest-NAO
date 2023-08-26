@@ -26,7 +26,7 @@ export class AuthController {
 
     @UseGuards(AuthGuard('jwt'))
     @ApiResponse({status: 201, description: 'An array of users has been posted'})
-    @Get()
+    @Get('listusers')
     async findAllUsers(): Promise<Auth[]> {
         return this.authService.findAllUsers();
     }
