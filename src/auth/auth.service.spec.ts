@@ -6,8 +6,9 @@ import { RegisterAuthDTO } from './dto/registerAuth.dto';
 import { LoginAuthDTO } from './dto/loginAuth.dto';
 import { JwtService } from '@nestjs/jwt';
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { hash, compare } from 'bcrypt';
+import { hash } from 'bcrypt';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -72,7 +73,7 @@ describe('AuthService', () => {
       const token = 'fake-token';
 
       jest.spyOn(authRepository, 'findOne').mockResolvedValue(findUser);
-      jest.spyOn(compare, 'compare').mockResolvedValue(true);
+      jest.spyOn(bcrypt, 'compare').mockResolvedValue(true);
       jest.spyOn(jwtService, 'sign').mockReturnValue(token);
 
       const result = await service.login(userObject);
@@ -103,7 +104,7 @@ describe('AuthService', () => {
       const findUser = { ...userObject, id:1, booksReserved: null, name:"Ariadna" }; 
 
       jest.spyOn(authRepository, 'findOne').mockResolvedValue(findUser);
-      jest.spyOn(compare, 'compare').mockResolvedValue(false);
+      jest.spyOn(bcrypt, 'compare').mockResolvedValue(true);
 
       await expect(service.login(userObject)).rejects.toThrowError(
         new HttpException('Password incorrect', HttpStatus.FORBIDDEN)
