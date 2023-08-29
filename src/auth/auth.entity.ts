@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Book } from 'src/books/Book.entity';
+import { Book } from '../books/Book.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('user')

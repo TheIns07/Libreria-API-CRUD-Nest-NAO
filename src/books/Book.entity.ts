@@ -1,11 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Auth } from "src/auth/auth.entity";
+import { Auth } from "../auth/auth.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('book')
 export class Book {
-    @ApiProperty({ example: 1 })
     @PrimaryGeneratedColumn()
     id: number
 
@@ -21,9 +20,11 @@ export class Book {
     @Column()
     description: string
 
+    @ApiProperty({example: true})
     @Column({default: true})
     avaliable: boolean
 
+    @ApiProperty({example: new Date()})
     @Column({ type: 'datetime', default: () => { 'CURRENT_TIMESTAMP' } })
     createdAt: Date
 

@@ -4,16 +4,17 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
+import { DB_ALIA, DB_HOST, DB_PASS, DB_USER, PORT } from './global/config';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
         type: 'mysql',
-        username: 'root',
-        password: '1234',
-        host: 'localhost',
-        port: 3306,
-        database: 'naonestdb',
+        username: DB_USER,
+        password: DB_PASS,
+        host: DB_HOST,
+        port: PORT,
+        database: DB_ALIA,
         entities: [__dirname + '/**/*.entity.{js,ts}'],
         synchronize: true
     }), BooksModule, AuthModule],

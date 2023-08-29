@@ -4,12 +4,11 @@ import { BooksService } from './books.service';
 import { Book } from './Book.entity';
 import { BookUpdate } from './models/BookUpdate.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { jwtAuthGuard } from 'src/auth/jwt/guard/jwtAuth.guard';
+import { jwtAuthGuard } from '../auth/jwt/guard/jwtAuth.guard';
 import { UseGuards } from '@nestjs/common/decorators/core/use-guards.decorator';
 
 @ApiTags('books')
 @Controller('books')
-
 @ApiBearerAuth()
 export class BooksController {
 

@@ -23,9 +23,11 @@ export class BookDTO{
     @MaxLength(700)
     description: string
 
+    @ApiProperty({example: true})
     @IsBoolean()
     avaliable: boolean
 
+    @ApiProperty({example: new Date()})
     @IsDate()
     @IsNotEmpty()
     createdAt: Date

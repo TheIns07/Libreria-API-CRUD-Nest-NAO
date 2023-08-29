@@ -9,7 +9,7 @@ import { BookUpdate } from './models/BookUpdate.dto';
 export class BooksService {
     constructor(
         @InjectRepository(Book)
-        private bookRepository: Repository<Book>
+        private readonly bookRepository: Repository<Book>
     ) {}
 
     async createBook(book: BookDTO){
