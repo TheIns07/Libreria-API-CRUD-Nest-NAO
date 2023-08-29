@@ -32,9 +32,9 @@ describe('AuthController', () => {
   describe('registerUser', () => {
     it('should register a user', async () => {
       const userObject: RegisterAuthDTO = {
-        name: 'Ariadna',
-        username: "Ari YuEx",
-        password: "arianaGD!!!!"
+        name: 'Rodrigo',
+        username: "Rodri",
+        password: "Rodri"
       };
 
       const createdUser = { ...userObject }; 
@@ -50,8 +50,8 @@ describe('AuthController', () => {
   describe('loginUser', () => {
     it('should log in a user', async () => {
       const userObject: LoginAuthDTO = {
-        username: "Ari YuEx",
-        password: "arianaGD!!!!"
+        username: "Rodrigo",
+        password: "Rodri"
       };
 
       const loggedInUser = { ...userObject };
@@ -69,9 +69,9 @@ describe('AuthController', () => {
       const users: Auth[] = [
         {
           id: 1,
-          name: 'Ariadna',
-          username: "Ari YuEx",
-          password: "arianaGD!!!!",
+          name: 'Rogrigo',
+          username: "Rodri",
+          password: "Rodri",
           booksReserved: null
         },
         {

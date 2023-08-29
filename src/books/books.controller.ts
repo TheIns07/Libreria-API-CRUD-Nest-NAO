@@ -75,6 +75,4 @@ export class BooksController {
     updateBook(@Param(('id'), ParseIntPipe) id: number, @Body() book: BookUpdate){
         return this.booksService.updateBook(id, book);
     }
-
-
 }
