@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Checkout
         run: echo "Hello World"
-      - name: Date
-        run: Date
+      - name: Date dime
+        run: date
       - run: ls -l
