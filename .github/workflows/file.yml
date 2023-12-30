@@ -1,0 +1,12 @@
+name: File in Integration
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        run: echo "Hello World"
