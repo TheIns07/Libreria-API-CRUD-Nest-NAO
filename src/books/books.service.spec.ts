@@ -67,9 +67,8 @@ describe('BooksService', () => {
       mockBookRepository.findOne.mockReturnValue(bookDto);
 
       await expect(service.createBook(bookDto)).rejects.toThrowError(
-        new HttpException('Libro ya registrado.', HttpStatus.CONFLICT)
+        new HttpException('Libro ya registrado.', HttpStatus.CONFLICT),
       );
     });
   });
-
 });

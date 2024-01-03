@@ -1,24 +1,20 @@
-import { Injectable } from "@nestjs/common";
-import { PassportStrategy } from "@nestjs/passport";
-import { ExtractJwt, Strategy } from "passport-jwt";
-import { jwtConstants } from "./jwtConstants";
-import { Auth } from "../auth.entity";
-import { LoginAuthDTO } from "../dto/loginAuth.dto";
-
+import { Injectable } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { jwtConstants } from './jwtConstants';
+import { LoginAuthDTO } from '../dto/loginAuth.dto';
 
 @Injectable()
+export class JWTStrategy extends PassportStrategy(Strategy) {
+  constructor() {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: jwtConstants.secret,
+    });
+  }
 
-export class JWTStrategy extends PassportStrategy(Strategy){
-    constructor(){
-        super({
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            ignoreExpiration: false,
-            secretOrKey: jwtConstants.secret
-        });
-    }
-
-    async validate(payload:any): Promise<LoginAuthDTO>{
-        return {username: payload.username, password: payload.password}
-    }
-
+  async validate(payload: any): Promise<LoginAuthDTO> {
+    return { username: payload.username, password: payload.password };
+  }
 }

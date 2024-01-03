@@ -16,12 +16,15 @@ describe('JWTStrategy', () => {
     expect(jwtStrategy).toBeDefined();
   });
 
-  describe('validate', ()  => {
+  describe('validate', () => {
     it('should return a user object with userID and username', async () => {
-      const payload = { username: 'Ari', password:'92ehwjn' };
+      const payload = { username: 'Ari', password: '92ehwjn' };
       const validatedUser = await jwtStrategy.validate(payload);
-      
-      expect(validatedUser).toEqual({ username: payload.username, password: payload.password });
+
+      expect(validatedUser).toEqual({
+        username: payload.username,
+        password: payload.password,
+      });
     });
   });
 });

@@ -20,10 +20,13 @@ describe('BooksController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [BooksController],
-      providers: [BooksService, {
-        provide: getRepositoryToken(Book), 
+      providers: [
+        BooksService,
+        {
+          provide: getRepositoryToken(Book),
           useClass: Repository,
-      }],
+        },
+      ],
     })
       .overrideProvider(BooksService)
       .useValue(mockBooksService)
@@ -44,7 +47,7 @@ describe('BooksController', () => {
         description: 'Descripcion de prueba',
         avaliable: true,
         createdAt: new Date(),
-        image: 'test-image-url.png'
+        image: 'test-image-url.png',
       };
 
       const createdBook = new Book();
@@ -65,7 +68,7 @@ describe('BooksController', () => {
         description: 'Test Description',
         avaliable: true,
         createdAt: new Date(),
-        image: 'test-image-url'
+        image: 'test-image-url',
       };
 
       const createdBook = new Book();
@@ -83,35 +86,38 @@ describe('BooksController', () => {
       allBooks.push(
         {
           id: 1,
-          title: "1984",
-          author: "George Orwell",
-          description: "Una distopía que explora temas de vigilancia y control totalitario.",
+          title: '1984',
+          author: 'George Orwell',
+          description:
+            'Una distopía que explora temas de vigilancia y control totalitario.',
           avaliable: false,
           createdAt: new Date(),
-          image: "imagen_libro_2.jpg",
-          booksReserved: <Auth> null
+          image: 'imagen_libro_2.jpg',
+          booksReserved: <Auth>null,
         },
         {
           id: 2,
-          title: "1984",
-          author: "George Orwell",
-          description: "Una distopía que explora temas de vigilancia y control totalitario.",
+          title: '1984',
+          author: 'George Orwell',
+          description:
+            'Una distopía que explora temas de vigilancia y control totalitario.',
           avaliable: false,
           createdAt: new Date(),
-          image: "imagen_libro_2.jpg",
-          booksReserved: <Auth> null
+          image: 'imagen_libro_2.jpg',
+          booksReserved: <Auth>null,
         },
         {
           id: 3,
-          title: "Cien años de soledad",
-          author: "Gabriel García Márquez",
-          description: "Una obra maestra del realismo mágico en la literatura latinoamericana.",
+          title: 'Cien años de soledad',
+          author: 'Gabriel García Márquez',
+          description:
+            'Una obra maestra del realismo mágico en la literatura latinoamericana.',
           avaliable: true,
           createdAt: new Date(),
-          image: "imagen_libro_3.jpg",
-          booksReserved: <Auth> null
-        }
-      )
+          image: 'imagen_libro_3.jpg',
+          booksReserved: <Auth>null,
+        },
+      );
       mockBooksService.listBooks.mockReturnValue(allBooks);
 
       const result = await controller.listBooks();
@@ -125,12 +131,13 @@ describe('BooksController', () => {
     it('should return a single book by ID', async () => {
       const bookId = 2;
       const book: BookDTO = {
-        title: "1984",
-        author: "George Orwell",
-        description: "Una distopía que explora temas de vigilancia y control totalitario.",
+        title: '1984',
+        author: 'George Orwell',
+        description:
+          'Una distopía que explora temas de vigilancia y control totalitario.',
         avaliable: false,
         createdAt: new Date(),
-        image: "imagen_libro_2.jpg"
+        image: 'imagen_libro_2.jpg',
       };
       mockBooksService.listBookByID.mockReturnValue(book);
 
@@ -145,19 +152,23 @@ describe('BooksController', () => {
     it('should update a book', async () => {
       const bookId = 2;
       const updatedBook: BookDTO = {
-        title: "1984",
-        author: "George Orwell",
-        description: "Una distopía que explora temas de vigilancia y control totalitario en un futuro alternativo.", //Cambio de descripcion 
+        title: '1984',
+        author: 'George Orwell',
+        description:
+          'Una distopía que explora temas de vigilancia y control totalitario en un futuro alternativo.', //Cambio de descripcion
         avaliable: true, //disponible
         createdAt: new Date(),
-        image: "imagen_libro_2.jpg"
+        image: 'imagen_libro_2.jpg',
       };
       mockBooksService.updateBook.mockReturnValue(updatedBook);
 
       const result = await controller.updateBook(bookId, updatedBook);
 
       expect(result).toBe(updatedBook);
-      expect(mockBooksService.updateBook).toHaveBeenCalledWith(bookId, updatedBook);
+      expect(mockBooksService.updateBook).toHaveBeenCalledWith(
+        bookId,
+        updatedBook,
+      );
     });
   });
 
@@ -165,12 +176,13 @@ describe('BooksController', () => {
     it('should delete a book', async () => {
       const bookId = 2;
       const deletedBook: BookDTO = {
-        title: "1984",
-        author: "George Orwell",
-        description: "Una distopía que explora temas de vigilancia y control totalitario en un futuro alternativo.", 
-        avaliable: true, 
+        title: '1984',
+        author: 'George Orwell',
+        description:
+          'Una distopía que explora temas de vigilancia y control totalitario en un futuro alternativo.',
+        avaliable: true,
         createdAt: new Date(),
-        image: "imagen_libro_2.jpg"
+        image: 'imagen_libro_2.jpg',
       };
       mockBooksService.deleteBook.mockReturnValue(deletedBook);
 
@@ -180,5 +192,4 @@ describe('BooksController', () => {
       expect(mockBooksService.deleteBook).toHaveBeenCalledWith(bookId);
     });
   });
-
 });

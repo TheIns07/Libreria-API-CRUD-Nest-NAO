@@ -33,11 +33,11 @@ describe('AuthController', () => {
     it('should register a user', async () => {
       const userObject: RegisterAuthDTO = {
         name: 'Rodrigo',
-        username: "Rodri",
-        password: "Rodri"
+        username: 'Rodri',
+        password: 'Rodri',
       };
 
-      const createdUser = { ...userObject }; 
+      const createdUser = { ...userObject };
       jest.spyOn(mockAuthService, 'register').mockResolvedValue(createdUser);
 
       const result = await controller.registerUser(userObject);
@@ -50,8 +50,8 @@ describe('AuthController', () => {
   describe('loginUser', () => {
     it('should log in a user', async () => {
       const userObject: LoginAuthDTO = {
-        username: "Rodrigo",
-        password: "Rodri"
+        username: 'Rodrigo',
+        password: 'Rodri',
       };
 
       const loggedInUser = { ...userObject };
@@ -70,24 +70,24 @@ describe('AuthController', () => {
         {
           id: 1,
           name: 'Rogrigo',
-          username: "Rodri",
-          password: "Rodri",
-          booksReserved: null
+          username: 'Rodri',
+          password: 'Rodri',
+          booksReserved: null,
         },
         {
           id: 1,
           name: 'Ariadna',
-          username: "Ari YuEx",
-          password: "arianaGD!!!!",
-          booksReserved: null
+          username: 'Ari YuEx',
+          password: 'arianaGD!!!!',
+          booksReserved: null,
         },
         {
           id: 1,
           name: 'Ariadna',
-          username: "Ari YuEx",
-          password: "arianaGD!!!!",
-          booksReserved: null
-        }
+          username: 'Ari YuEx',
+          password: 'arianaGD!!!!',
+          booksReserved: null,
+        },
       ];
       jest.spyOn(mockAuthService, 'findAllUsers').mockResolvedValue(users);
 

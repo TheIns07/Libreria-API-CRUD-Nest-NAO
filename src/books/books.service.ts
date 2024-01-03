@@ -7,40 +7,40 @@ import { BookUpdate } from './models/BookUpdate.dto';
 
 @Injectable()
 export class BooksService {
-    constructor(
-        @InjectRepository(Book)
-        private readonly bookRepository: Repository<Book>
-    ) {}
+  constructor(
+    @InjectRepository(Book)
+    private readonly bookRepository: Repository<Book>,
+  ) {}
 
-    async createBook(book: BookDTO){
-       if(await this.bookRepository.findOne({where:{title: book.title}})){
-            return new HttpException ("Libro ya registrado.", HttpStatus.CONFLICT)
-        }
-        const newBook = this.bookRepository.create(book);
-        return this.bookRepository.save(newBook);
+  async createBook(book: BookDTO) {
+    if (await this.bookRepository.findOne({ where: { title: book.title } })) {
+      return new HttpException('Libro ya registrado.', HttpStatus.CONFLICT);
     }
+    const newBook = this.bookRepository.create(book);
+    return this.bookRepository.save(newBook);
+  }
 
-    listBooks(){
-        return this.bookRepository.find()
-    }
+  listBooks() {
+    return this.bookRepository.find();
+  }
 
-    async listBookByID(id: number){
-        const book = await this.bookRepository.findOne({ where:{ id: id}});
-        if(!book){
-            return new HttpException ("Libro no encontrado.", HttpStatus.NOT_FOUND)
-        }
-        return book 
+  async listBookByID(id: number) {
+    const book = await this.bookRepository.findOne({ where: { id: id } });
+    if (!book) {
+      return new HttpException('Libro no encontrado.', HttpStatus.NOT_FOUND);
     }
+    return book;
+  }
 
-    async deleteBook(id: number){
-        const book = await this.bookRepository.findOne({where: {id}});
-        if(!book){
-            return new HttpException ("Libro no encontrado.", HttpStatus.NOT_FOUND)
-        }
-        return this.bookRepository.delete({id: id}); 
+  async deleteBook(id: number) {
+    const book = await this.bookRepository.findOne({ where: { id } });
+    if (!book) {
+      return new HttpException('Libro no encontrado.', HttpStatus.NOT_FOUND);
     }
+    return this.bookRepository.delete({ id: id });
+  }
 
-    updateBook(id: number, book: BookUpdate){
-        return this.bookRepository.update({id: id}, book);
-    }
+  updateBook(id: number, book: BookUpdate) {
+    return this.bookRepository.update({ id: id }, book);
+  }
 }

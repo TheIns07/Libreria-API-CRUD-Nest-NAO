@@ -4,7 +4,6 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('user')
 export class Auth {
-
   @ApiProperty({ example: 1 })
   @PrimaryGeneratedColumn()
   id: number;
@@ -23,6 +22,6 @@ export class Auth {
   @Column()
   password: string;
 
-  @OneToMany(() => Book, book => book.booksReserved)
-  booksReserved: Book[]
+  @OneToMany(() => Book, (book) => book.booksReserved)
+  booksReserved: Book[];
 }
