@@ -11,10 +11,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps: 
-      - name: Cancel Redudants Build
-        uses: styfle/cancel-workflow-action
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
