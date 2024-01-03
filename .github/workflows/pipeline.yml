@@ -2,8 +2,10 @@ name: deployment pipe
 
 on: 
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
 
 jobs:
   deploy:
